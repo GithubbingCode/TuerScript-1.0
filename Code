@@ -1,0 +1,315 @@
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Tabs = Instance.new("Frame")
+local ExecutorTab = Instance.new("Frame")
+local LocalPlayerTab = Instance.new("Frame")
+local SettingsTab = Instance.new("Frame")
+local ExecutorTextBox = Instance.new("TextBox")
+local ExecuteButton = Instance.new("TextButton")
+local ClearButton = Instance.new("TextButton")
+local SpeedTextBox = Instance.new("TextBox")
+local JumpPowerTextBox = Instance.new("TextBox")
+local SetSpeedButton = Instance.new("TextButton")
+local SetJumpPowerButton = Instance.new("TextButton")
+local FlightToggleButton = Instance.new("TextButton")
+local NoclipToggleButton = Instance.new("TextButton")
+local BlackHoleButton = Instance.new("TextButton")
+local InfiniteYieldButton = Instance.new("TextButton")
+local CreditsLabel = Instance.new("TextLabel")
+local KillGUIButton = Instance.new("TextButton")
+
+-- Properties
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.CoreGui
+
+-- BLACKHOLE
+function createBlackHole()
+    for _, part in pairs(workspace:GetDescendants()) do
+        if part:IsA("BasePart") and not part.Anchored then
+            part.CFrame = CFrame.new(0, 5, 0)
+        end
+    end
+end
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.3, 0, 0.3, 0)
+MainFrame.Size = UDim2.new(0, 400, 0, 300)
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+Title.Name = "Title"
+Title.Parent = MainFrame
+Title.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+Title.Size = UDim2.new(1, 0, 0, 30)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "TuerScript 1.0"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 24
+
+Tabs.Name = "Tabs"
+Tabs.Parent = MainFrame
+Tabs.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+Tabs.Position = UDim2.new(0, 0, 0, 30)
+Tabs.Size = UDim2.new(1, 0, 0, 30)
+
+ExecutorTab.Name = "ExecutorTab"
+ExecutorTab.Parent = MainFrame
+ExecutorTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ExecutorTab.Position = UDim2.new(0, 0, 0, 60)
+ExecutorTab.Size = UDim2.new(1, 0, 1, -60)
+
+ExecutorTextBox.Name = "ExecutorTextBox"
+ExecutorTextBox.Parent = ExecutorTab
+ExecutorTextBox.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+ExecutorTextBox.Position = UDim2.new(0, 10, 0, 10)
+ExecutorTextBox.Size = UDim2.new(1, -20, 0, 200)
+ExecutorTextBox.Font = Enum.Font.SourceSans
+ExecutorTextBox.PlaceholderText = "Insert script here..."
+ExecutorTextBox.Text = ""
+ExecutorTextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+ExecutorTextBox.TextSize = 18
+ExecutorTextBox.TextWrapped = true
+
+ExecuteButton.Name = "ExecuteButton"
+ExecuteButton.Parent = ExecutorTab
+ExecuteButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+ExecuteButton.Position = UDim2.new(0, 10, 1, -40)
+ExecuteButton.Size = UDim2.new(0.5, -15, 0, 30)
+ExecuteButton.Font = Enum.Font.SourceSans
+ExecuteButton.Text = "Execute"
+ExecuteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExecuteButton.TextSize = 18
+
+ClearButton.Name = "ClearButton"
+ClearButton.Parent = ExecutorTab
+ClearButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+ClearButton.Position = UDim2.new(0.5, 5, 1, -40)
+ClearButton.Size = UDim2.new(0.5, -15, 0, 30)
+ClearButton.Font = Enum.Font.SourceSans
+ClearButton.Text = "Clear"
+ClearButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ClearButton.TextSize = 18
+
+LocalPlayerTab.Name = "LocalPlayerTab"
+LocalPlayerTab.Parent = MainFrame
+LocalPlayerTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LocalPlayerTab.Position = UDim2.new(0, 0, 0, 60)
+LocalPlayerTab.Size = UDim2.new(1, 0, 1, -60)
+LocalPlayerTab.Visible = false
+
+SpeedTextBox.Name = "SpeedTextBox"
+SpeedTextBox.Parent = LocalPlayerTab
+SpeedTextBox.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+SpeedTextBox.Position = UDim2.new(0, 10, 0, 10)
+SpeedTextBox.Size = UDim2.new(0.5, -15, 0, 30)
+SpeedTextBox.Font = Enum.Font.SourceSans
+SpeedTextBox.PlaceholderText = "Speed"
+SpeedTextBox.Text = ""
+SpeedTextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+SpeedTextBox.TextSize = 18
+
+JumpPowerTextBox.Name = "JumpPowerTextBox"
+JumpPowerTextBox.Parent = LocalPlayerTab
+JumpPowerTextBox.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+JumpPowerTextBox.Position = UDim2.new(0.5, 5, 0, 10)
+JumpPowerTextBox.Size = UDim2.new(0.5, -15, 0, 30)
+JumpPowerTextBox.Font = Enum.Font.SourceSans
+JumpPowerTextBox.PlaceholderText = "Jump Power"
+JumpPowerTextBox.Text = ""
+JumpPowerTextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+JumpPowerTextBox.TextSize = 18
+
+SetSpeedButton.Name = "SetSpeedButton"
+SetSpeedButton.Parent = LocalPlayerTab
+SetSpeedButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+SetSpeedButton.Position = UDim2.new(0, 10, 0, 50)
+SetSpeedButton.Size = UDim2.new(0.5, -15, 0, 30)
+SetSpeedButton.Font = Enum.Font.SourceSans
+SetSpeedButton.Text = "Set Speed"
+SetSpeedButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SetSpeedButton.TextSize = 18
+
+SetJumpPowerButton.Name = "SetJumpPowerButton"
+SetJumpPowerButton.Parent = LocalPlayerTab
+SetJumpPowerButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+SetJumpPowerButton.Position = UDim2.new(0.5, 5, 0, 50)
+SetJumpPowerButton.Size = UDim2.new(0.5, -15, 0, 30)
+SetJumpPowerButton.Font = Enum.Font.SourceSans
+SetJumpPowerButton.Text = "Set Jump Power"
+SetJumpPowerButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SetJumpPowerButton.TextSize = 18
+
+FlightToggleButton.Name = "FlightToggleButton"
+FlightToggleButton.Parent = LocalPlayerTab
+FlightToggleButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+FlightToggleButton.Position = UDim2.new(0, 10, 0, 90)
+FlightToggleButton.Size = UDim2.new(1, -20, 0, 30)
+FlightToggleButton.Font = Enum.Font.SourceSans
+FlightToggleButton.Text = "Toggle Flight"
+FlightToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+FlightToggleButton.TextSize = 18
+
+NoclipToggleButton.Name = "NoclipToggleButton"
+NoclipToggleButton.Parent = LocalPlayerTab
+NoclipToggleButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+NoclipToggleButton.Position = UDim2.new(0, 10, 0, 130)
+NoclipToggleButton.Size = UDim2.new(1, -20, 0, 30)
+NoclipToggleButton.Font = Enum.Font.SourceSans
+NoclipToggleButton.Text = "Toggle Noclip (E)"
+NoclipToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+NoclipToggleButton.TextSize = 18
+
+BlackHoleButton.Name = "BlackHoleButton"
+BlackHoleButton.Parent = LocalPlayerTab
+BlackHoleButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+BlackHoleButton.Position = UDim2.new(0, 10, 0, 170)
+BlackHoleButton.Size = UDim2.new(1, -20, 0, 30)
+BlackHoleButton.Font = Enum.Font.SourceSans
+BlackHoleButton.Text = "Black Hole"
+BlackHoleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlackHoleButton.TextSize = 18
+
+InfiniteYieldButton.Name = "InfiniteYieldButton"
+InfiniteYieldButton.Parent = LocalPlayer
+InfiniteYieldButton.Name = "InfiniteYieldButton"
+InfiniteYieldButton.Parent = LocalPlayerTab
+InfiniteYieldButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+InfiniteYieldButton.Position = UDim2.new(0, 10, 0, 210)
+InfiniteYieldButton.Size = UDim2.new(1, -20, 0, 30)
+InfiniteYieldButton.Font = Enum.Font.SourceSans
+InfiniteYieldButton.Text = "Infinite Yield"
+InfiniteYieldButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+InfiniteYieldButton.TextSize = 18
+
+SettingsTab.Name = "SettingsTab"
+SettingsTab.Parent = MainFrame
+SettingsTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SettingsTab.Position = UDim2.new(0, 0, 0, 60)
+SettingsTab.Size = UDim2.new(1, 0, 1, -60)
+SettingsTab.Visible = false
+
+CreditsLabel.Name = "CreditsLabel"
+CreditsLabel.Parent = SettingsTab
+CreditsLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CreditsLabel.Position = UDim2.new(0, 10, 0, 10)
+CreditsLabel.Size = UDim2.new(1, -20, 0, 30)
+CreditsLabel.Font = Enum.Font.SourceSans
+CreditsLabel.Text = "YouTube: ThatGodlyBacon"
+CreditsLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+CreditsLabel.TextSize = 18
+
+KillGUIButton.Name = "KillGUIButton"
+KillGUIButton.Parent = SettingsTab
+KillGUIButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+KillGUIButton.Position = UDim2.new(0, 10, 0, 50)
+KillGUIButton.Size = UDim2.new(1, -20, 0, 30)
+KillGUIButton.Font = Enum.Font.SourceSans
+KillGUIButton.Text = "Kill GUI"
+KillGUIButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+KillGUIButton.TextSize = 18
+
+-- Tab Buttons
+local ExecutorTabButton = Instance.new("TextButton")
+local LocalPlayerTabButton = Instance.new("TextButton")
+local SettingsTabButton = Instance.new("TextButton")
+
+ExecutorTabButton.Name = "ExecutorTabButton"
+ExecutorTabButton.Parent = Tabs
+ExecutorTabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+ExecutorTabButton.Size = UDim2.new(0.33, -5, 1, 0)
+ExecutorTabButton.Font = Enum.Font.SourceSans
+ExecutorTabButton.Text = "Executor"
+ExecutorTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExecutorTabButton.TextSize = 18
+
+LocalPlayerTabButton.Name = "LocalPlayerTabButton"
+LocalPlayerTabButton.Parent = Tabs
+LocalPlayerTabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+LocalPlayerTabButton.Position = UDim2.new(0.33, 5, 0, 0)
+LocalPlayerTabButton.Size = UDim2.new(0.33, -5, 1, 0)
+LocalPlayerTabButton.Font = Enum.Font.SourceSans
+LocalPlayerTabButton.Text = "Local Player"
+LocalPlayerTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+LocalPlayerTabButton.TextSize = 18
+
+SettingsTabButton.Name = "SettingsTabButton"
+SettingsTabButton.Parent = Tabs
+SettingsTabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+SettingsTabButton.Position = UDim2.new(0.66, 5, 0, 0)
+SettingsTabButton.Size = UDim2.new(0.33, -5, 1, 0)
+SettingsTabButton.Font = Enum.Font.SourceSans
+SettingsTabButton.Text = "Settings"
+SettingsTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SettingsTabButton.TextSize = 18
+
+-- Tab Functionality
+ExecutorTabButton.MouseButton1Click:Connect(function()
+    ExecutorTab.Visible = true
+    LocalPlayerTab.Visible = false
+    SettingsTab.Visible = false
+end)
+
+LocalPlayerTabButton.MouseButton1Click:Connect(function()
+    ExecutorTab.Visible = false
+    LocalPlayerTab.Visible = true
+    SettingsTab.Visible = false
+end)
+
+SettingsTabButton.MouseButton1Click:Connect(function()
+    ExecutorTab.Visible = false
+    LocalPlayerTab.Visible = false
+    SettingsTab.Visible = true
+end)
+
+-- Functionality for buttons
+ExecuteButton.MouseButton1Click:Connect(function()
+    local script = ExecutorTextBox.Text
+    loadstring(script)()
+end)
+
+ClearButton.MouseButton1Click:Connect(function()
+    ExecutorTextBox.Text = ""
+end)
+
+SetSpeedButton.MouseButton1Click:Connect(function()
+    local speed = tonumber(SpeedTextBox.Text)
+    if speed then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+    end
+end)
+
+SetJumpPowerButton.MouseButton1Click:Connect(function()
+    local jumpPower = tonumber(JumpPowerTextBox.Text)
+    if jumpPower then
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = jumpPower
+    end
+end)
+
+FlightToggleButton.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/W5aQUui6'))()
+end)
+
+NoclipToggleButton.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/EL6YvhLg'))()
+end)
+
+BlackHoleButton.MouseButton1Click:Connect(function()
+    createBlackHole()
+end)
+
+InfiniteYieldButton.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+KillGUIButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+-- Ensure GUI doesn't disappear on reset
+game.Players.LocalPlayer.CharacterAdded:Connect(function()
+    ScreenGui.Parent = game.CoreGui
+end)
